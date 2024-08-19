@@ -8,8 +8,8 @@ class Solution:
                 i += 1
         return i
         '''
-        # Time: O(1)
-        # Spance: O(n)
+        # Time: O(n)
+        # Spance: O(1)
         
         left, right = 0, 0
 
