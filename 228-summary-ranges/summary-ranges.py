@@ -1,5 +1,8 @@
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
+        # Time: O(n)
+        # Space: O(1)
+
         result = []
         n = len(nums)
 
