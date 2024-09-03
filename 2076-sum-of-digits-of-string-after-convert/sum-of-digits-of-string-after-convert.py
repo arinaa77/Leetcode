@@ -1,8 +1,14 @@
 class Solution:
     def getLucky(self, s: str, k: int) -> int:
-        num_str = ''.join(str(ord(char) - ord('a') + 1) for char in s)
+        nums_str = ''
+        for char in s:
+            pos = ord(char) - ord('a') + 1
+            nums_str += str(pos)
         
         for _ in range(k):
-            num_str = str(sum(int(digit) for digit in num_str))
+            total = 0
+            for digit in nums_str:
+                total += int(digit)
+            nums_str = str(total)
         
-        return int(num_str)
+        return int(nums_str)
