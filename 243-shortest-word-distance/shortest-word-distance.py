@@ -1,8 +1,11 @@
 class Solution:
     def shortestDistance(self, wordsDict: List[str], word1: str, word2: str) -> int:
+        # Time: O(n)
+        # Space: O(1)
+        
         word1_ind, word2_ind = -1, -1
         result = float('inf')
-        
+
         for i in range(len(wordsDict)):
             if wordsDict[i] == word1:
                 word1_ind = i
