@@ -1,26 +1,22 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        self.result = []
-        path = []
-        used = [False] * len(nums)
+        def backtrack(nums, path, used, result):
+            if len(path) == len(nums):
+                result.append(path[:])
+                return
+            
+            for i in range(len(nums)):
+                # Track if num is used by index
+                if used[i]:
+                    continue
+                    
+                used[i] = True
+                path.append(nums[i])
+                backtrack(nums, path, used, result)
+                path.pop()
+                used[i] = False
 
-        self.backtrack(nums, path, used)
-        return self.result
-    
-    def backtrack(self, nums, path, used):
-        # Base case
-        if len(path) == len(nums):
-            self.result.append(path.copy())
-            return
-        
-        for i in range(len(nums)):
-            if used[i]:
-                continue
-            # Make the choice
-            path.append(nums[i])
-            used[i] = True
-            # Recursively go deeper into the decision tree
-            self.backtrack(nums, path, used)
-            # Undo the choice (backtrack)
-            path.pop()
-            used[i] = False
+        result = []
+        used = [False] * len(nums)
+        backtrack(nums, [], used, result)
+        return result
